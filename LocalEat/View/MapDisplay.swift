@@ -6,10 +6,16 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MapDisplay: View {
+    
+    // Nous ajouterons un @StateObject (ou @ObservedObject si vous utilisez iOS13) pour recevoir les mises à jour de la région.
+    @StateObject var manager = LocationManager()
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        Map(coordinateRegion: $manager.region, showsUserLocation: true)
+            .ignoresSafeArea(.all)
     }
 }
 

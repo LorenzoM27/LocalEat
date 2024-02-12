@@ -38,7 +38,7 @@ struct MainView: View {
             }
             .padding(6)
             .frame(height: 70)
-            .background(colorScheme == .dark ? .gray.opacity(0.4) : .gray.opacity(0.1))
+            .background(colorScheme == .dark ? .gray.opacity(0.4) : .gray.opacity(0.3))
             .cornerRadius(35)
             .padding(.horizontal, 26)
         }

@@ -21,6 +21,8 @@
 		6E9CB6CA2B7A5E320074C2D9 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CB6C92B7A5E320074C2D9 /* MapView.swift */; };
 		6E9CB6CC2B7A5F020074C2D9 /* TabItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CB6CB2B7A5F010074C2D9 /* TabItems.swift */; };
 		6E9CB6CE2B7A63F80074C2D9 /* FavoriteView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CB6CD2B7A63F80074C2D9 /* FavoriteView.swift */; };
+		6E9CB6D82B7AC0DC0074C2D9 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CB6D72B7AC0DC0074C2D9 /* LocationManager.swift */; };
+		6E9CB6DA2B7AC2090074C2D9 /* MapDisplay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CB6D92B7AC2090074C2D9 /* MapDisplay.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +41,8 @@
 		6E9CB6C92B7A5E320074C2D9 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		6E9CB6CB2B7A5F010074C2D9 /* TabItems.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabItems.swift; sourceTree = "<group>"; };
 		6E9CB6CD2B7A63F80074C2D9 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
+		6E9CB6D72B7AC0DC0074C2D9 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
+		6E9CB6D92B7AC2090074C2D9 /* MapDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDisplay.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -105,6 +109,7 @@
 			isa = PBXGroup;
 			children = (
 				6E9CB6CB2B7A5F010074C2D9 /* TabItems.swift */,
+				6E9CB6D72B7AC0DC0074C2D9 /* LocationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -118,6 +123,7 @@
 				6E9CB6CD2B7A63F80074C2D9 /* FavoriteView.swift */,
 				6E9CB6C72B7A5DED0074C2D9 /* ProfilView.swift */,
 				6E9CB6C92B7A5E320074C2D9 /* MapView.swift */,
+				6E9CB6D92B7AC2090074C2D9 /* MapDisplay.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -206,8 +212,10 @@
 				6E9CB6C82B7A5DED0074C2D9 /* ProfilView.swift in Sources */,
 				6E9CB6B82B7A50FF0074C2D9 /* DataController.swift in Sources */,
 				6E9CB6CE2B7A63F80074C2D9 /* FavoriteView.swift in Sources */,
+				6E9CB6DA2B7AC2090074C2D9 /* MapDisplay.swift in Sources */,
 				6E9CB6C42B7A5D2B0074C2D9 /* SettingView.swift in Sources */,
 				6E9CB6A42B7A4F680074C2D9 /* LocalEatApp.swift in Sources */,
+				6E9CB6D82B7AC0DC0074C2D9 /* LocationManager.swift in Sources */,
 				6E9CB6C62B7A5D940074C2D9 /* BasketView.swift in Sources */,
 				6E9CB6CA2B7A5E320074C2D9 /* MapView.swift in Sources */,
 				6E9CB6BB2B7A515A0074C2D9 /* BasketModel.xcdatamodeld in Sources */,

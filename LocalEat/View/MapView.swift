@@ -9,17 +9,15 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
+    
     var body: some View {
         ZStack {
-            MapDisplay
+            MapDisplay()
         }
     }
     
     // MARK: Private subviews
     
-    private var MapDisplay: some View {
-        Map()
-    }
 }
 
 #Preview {
