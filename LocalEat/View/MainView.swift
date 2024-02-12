@@ -1,5 +1,5 @@
 //
-//  TabView.swift
+//  MainView.swift
 //  LocalEat
 //
 //  Created by Lorenzo Menino on 12/02/2024.
@@ -7,12 +7,69 @@
 
 import SwiftUI
 
-struct TabView: View {
+struct MainView: View {
+    @Environment(\.colorScheme) var colorScheme
+    @State var selectedTab = 0
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ZStack(alignment: .bottom) {
+            TabView(selection : $selectedTab) {
+                MapView()
+                    .tag(0)
+                BasketView()
+                    .tag(1)
+                FavoriteView()
+                    .tag(2)
+                ProfilView()
+                    .tag(3)
+                SettingView()
+                    .tag(4)
+            }
+
+            
+            HStack{
+                ForEach((TabItems.allCases), id: \.self){ item in
+                    Button{
+                        selectedTab = item.rawValue
+                    } label: {
+                        CustomTabItem(imageName: item.iconName, isActive: (selectedTab == item.rawValue))
+                    }
+                }
+            }
+            .padding(6)
+            .frame(height: 70)
+            .background(colorScheme == .dark ? .gray.opacity(0.4) : .gray.opacity(0.1))
+            .cornerRadius(35)
+            .padding(.horizontal, 26)
+        }
+        
+    }
+}
+
+extension MainView {
+    func CustomTabItem(imageName: String, isActive : Bool) -> some View {
+        VStack{
+            if isActive {
+                Image(systemName: "\(imageName).fill")
+                    .resizable()
+                //.renderingMode(.template)
+                    .foregroundStyle(.primaryAccent)
+                    .frame(width : 20, height: 20)
+            } else {
+                Image(systemName: imageName)
+                    .resizable()
+                //.renderingMode(.template)
+                    .foregroundStyle(colorScheme == .dark ?.white : .black)
+                    .frame(width : 20, height: 20)
+            }
+        }
+        .frame(width: 60, height: 60)
+        
+        
+        
     }
 }
 
 #Preview {
-    TabView()
+    MainView()
 }

@@ -1,5 +1,5 @@
 //
-//  TabbedItems.swift
+//  TabItems.swift
 //  LocalEat
 //
 //  Created by Lorenzo Menino on 12/02/2024.
@@ -8,7 +8,7 @@
 import Foundation
 
 
-enum TabbedItems : Int, CaseIterable {
+enum TabItems : Int, CaseIterable {
     
     case map =  0
     case basket
