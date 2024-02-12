@@ -37,7 +37,7 @@ struct MapView: View {
     
     private var requestLocation : some View {
         Button {
-            manager.requestLocation()
+            //manager.requestLocation()
         } label: {
             Circle()
                 .foregroundColor(colorScheme == .dark ? .white.opacity(0.6) : .white.opacity(0.8))

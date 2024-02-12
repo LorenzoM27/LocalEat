@@ -69,7 +69,7 @@ extension LocationManager: CLLocationManagerDelegate {
         }
     }
     
-    func requestLocation() {
-        locationManager.requestLocation()
-    }
+//    func requestLocation() {
+//        locationManager.requestLocation()
+//    }
 }
