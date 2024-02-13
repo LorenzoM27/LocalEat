@@ -8,9 +8,7 @@
 import MapKit
 
 final class LocationManager: NSObject, ObservableObject {
-    private let locationManager = CLLocationManager()
-    
-    
+    var locationManager = CLLocationManager()
     
     @Published var region = MKCoordinateRegion(
         center: .init(latitude: 37.334_900, longitude: -122.009_020),
@@ -48,6 +46,7 @@ extension LocationManager: CLLocationManagerDelegate {
     
     func requestLocation() {
         locationManager.requestLocation()
+        region.center = locationManager.location!.coordinate
     }
     
     // Le premier est appelé lorsque l'utilisateur modifie l'autorisation. S'il est accepté, nous voulons demander l'emplacement afin de mettre à jour la carte (comme nous l'avons fait dans la méthode de configuration)
@@ -82,6 +81,5 @@ extension LocationManager: CLLocationManagerDelegate {
             self.region = MKCoordinateRegion(center: latestLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
         }
     }
-    
     
 }

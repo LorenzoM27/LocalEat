@@ -15,15 +15,20 @@ struct MapView: View {
     
     var body: some View {
         ZStack {
-            MapDisplay()
+            mapDisplay
             searchBar
             
-                
             
         }
     }
     
     // MARK: Private subviews
+    
+    private var mapDisplay : some View {
+        Map(coordinateRegion: $manager.region, showsUserLocation: true)
+            .ignoresSafeArea(.all)
+        
+    }
     
     private var searchBar : some View {
         VStack{
@@ -50,7 +55,7 @@ struct MapView: View {
         .tint(colorScheme == .dark ? .white : .white)
         .font(.system(size: 22))
         .padding()
-
+        
     }
 }
 
