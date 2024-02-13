@@ -1,64 +1,38 @@
 //
-//  MapView.swift
+//  Map.swift
 //  LocalEat
 //
-//  Created by Lorenzo Menino on 12/02/2024.
+//  Created by Lorenzo Menino on 13/02/2024.
 //
 
 import SwiftUI
-import CoreLocationUI
 import MapKit
 
-struct MapView: View {
-    @Environment(\.colorScheme) var colorScheme
-    @StateObject var manager = LocationManager()
+struct MapView: UIViewRepresentable {
     
-    var body: some View {
-        ZStack {
-            mapDisplay
-            searchBar
-            
-            
-        }
+    @EnvironmentObject var mapData : MapViewModel
+    
+    func makeCoordinator() -> Coordinator {
+        return MapView.Coordinator()
     }
     
-    // MARK: Private subviews
+    func makeUIView(context: Context) -> MKMapView {
+        
+        let view = mapData.mapView
+        view.showsUserLocation = true
+        view.delegate = context.coordinator
+        
+        return view
+    }
     
-    private var mapDisplay : some View {
-        Map(coordinateRegion: $manager.region, showsUserLocation: true)
-            .ignoresSafeArea(.all)
+    func updateUIView(_ uiView: MKMapView, context: Context) {
         
     }
     
-    private var searchBar : some View {
-        VStack{
-            Text("Search Bar")
-            HStack{
-                Spacer()
-                requestLocation
-            }
-            .padding()
-            
-            Spacer()
-        }
-    }
-    
-    private var requestLocation : some View {
-        LocationButton(.currentLocation) {
-            manager.requestLocation()
-            print("request")
-        }
-        .foregroundColor(.blue)
-        .cornerRadius(25)
-        .symbolVariant(.fill)
-        .labelStyle(.iconOnly)
-        .tint(colorScheme == .dark ? .white : .white)
-        .font(.system(size: 22))
-        .padding()
+    class Coordinator : NSObject, MKMapViewDelegate {
         
     }
+
 }
 
-#Preview {
-    MapView()
-}
+

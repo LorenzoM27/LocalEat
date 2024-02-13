@@ -14,7 +14,7 @@ struct MainView: View {
     var body: some View {
         ZStack(alignment: .bottom) {
             TabView(selection : $selectedTab) {
-                MapView()
+                MapSearchView()
                     .tag(0)
                 BasketView()
                     .tag(1)
@@ -38,7 +38,7 @@ struct MainView: View {
             }
             .padding(6)
             .frame(height: 70)
-            .background(colorScheme == .dark ? .gray.opacity(0.4) : .gray.opacity(0.3))
+            .background(colorScheme == .dark ? .white.opacity(1) : .gray.opacity(0.7))
             .cornerRadius(35)
             .padding(.horizontal, 26)
         }
@@ -59,7 +59,7 @@ extension MainView {
                 Image(systemName: imageName)
                     .resizable()
                 //.renderingMode(.template)
-                    .foregroundStyle(colorScheme == .dark ?.white : .black)
+                    .foregroundStyle(colorScheme == .dark ? .gray : .white)
                     .frame(width : 20, height: 20)
             }
         }
