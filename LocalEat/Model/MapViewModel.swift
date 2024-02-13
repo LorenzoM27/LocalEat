@@ -27,6 +27,9 @@ class MapViewModel : NSObject, ObservableObject, CLLocationManagerDelegate {
     // Search Text
     @Published var searchTxt = ""
     
+    // Search Places ...
+    @Published var places : [Place] = []
+    
     // updating map type
     func updateMapType() {
         
@@ -47,6 +50,45 @@ class MapViewModel : NSObject, ObservableObject, CLLocationManagerDelegate {
         mapView.setVisibleMapRect(mapView.visibleMapRect, animated: true)
     }
     
+    // Search Places ...
+    func searchQuery(){
+        
+        places.removeAll()
+        
+        let request  = MKLocalSearch.Request()
+        request.naturalLanguageQuery = searchTxt
+        
+        // Fetch...
+        MKLocalSearch(request: request).start { response, _ in
+            guard let result = response else {return}
+            
+            self.places = result.mapItems.compactMap({ item in
+                return Place(place: item.placemark)
+            })
+        }
+    }
+    
+    // Pick search Result...
+    func selectPlaces(place: Place) {
+        // Showing pin on map
+        searchTxt = ""
+        
+        guard let coordinate = place.place.location?.coordinate else {return}
+        
+        let pointAnnotation = MKPointAnnotation()
+        pointAnnotation.coordinate = coordinate
+        pointAnnotation.title = place.place.name ?? "Sans Nom"
+        
+        // Removing all old ones
+        mapView.removeAnnotations(mapView.annotations)
+        
+        mapView.addAnnotation(pointAnnotation)
+        
+        // Moving Map to that Location
+        let coordinateRegion = MKCoordinateRegion(center: coordinate, latitudinalMeters: 10000, longitudinalMeters: 10000)
+        mapView.setRegion(coordinateRegion, animated: true)
+        mapView.setVisibleMapRect(mapView.visibleMapRect, animated: true)
+    }
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         // Cheking Permissions

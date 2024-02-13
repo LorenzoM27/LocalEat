@@ -25,6 +25,7 @@
 		6E9CB6E32B7BB7F70074C2D9 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CB6E22B7BB7F70074C2D9 /* MapViewModel.swift */; };
 		6E9CB6E72B7BC3B10074C2D9 /* SettingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CB6E62B7BC3B10074C2D9 /* SettingView.swift */; };
 		6E9CB6EA2B7BC8ED0074C2D9 /* MapViewEx.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CB6E92B7BC8ED0074C2D9 /* MapViewEx.swift */; };
+		6E9CB6EC2B7BCEA80074C2D9 /* Place.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E9CB6EB2B7BCEA80074C2D9 /* Place.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		6E9CB6E22B7BB7F70074C2D9 /* MapViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapViewModel.swift; path = ../Model/MapViewModel.swift; sourceTree = "<group>"; };
 		6E9CB6E62B7BC3B10074C2D9 /* SettingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = SettingView.swift; path = ../../SettingView.swift; sourceTree = "<group>"; };
 		6E9CB6E92B7BC8ED0074C2D9 /* MapViewEx.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewEx.swift; sourceTree = "<group>"; };
+		6E9CB6EB2B7BCEA80074C2D9 /* Place.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Place.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -116,6 +118,7 @@
 			isa = PBXGroup;
 			children = (
 				6E9CB6CB2B7A5F010074C2D9 /* TabItems.swift */,
+				6E9CB6EB2B7BCEA80074C2D9 /* Place.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -233,6 +236,7 @@
 				6E9CB6CE2B7A63F80074C2D9 /* FavoriteView.swift in Sources */,
 				6E9CB6A42B7A4F680074C2D9 /* LocalEatApp.swift in Sources */,
 				6E9CB6D82B7AC0DC0074C2D9 /* LocationManager.swift in Sources */,
+				6E9CB6EC2B7BCEA80074C2D9 /* Place.swift in Sources */,
 				6E9CB6E32B7BB7F70074C2D9 /* MapViewModel.swift in Sources */,
 				6E9CB6C62B7A5D940074C2D9 /* BasketView.swift in Sources */,
 				6E9CB6CA2B7A5E320074C2D9 /* MapView.swift in Sources */,
