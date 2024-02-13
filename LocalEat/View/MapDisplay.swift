@@ -14,8 +14,11 @@ struct MapDisplay: View {
     @StateObject var manager = LocationManager()
     
     var body: some View {
-        Map(coordinateRegion: $manager.region, showsUserLocation: true)
-            .ignoresSafeArea(.all)
+        ZStack {
+            Map(coordinateRegion: $manager.region, showsUserLocation: true)
+                .ignoresSafeArea(.all)
+            
+        }
     }
 }
 

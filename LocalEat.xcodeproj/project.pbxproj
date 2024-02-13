@@ -43,6 +43,7 @@
 		6E9CB6CD2B7A63F80074C2D9 /* FavoriteView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoriteView.swift; sourceTree = "<group>"; };
 		6E9CB6D72B7AC0DC0074C2D9 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		6E9CB6D92B7AC2090074C2D9 /* MapDisplay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapDisplay.swift; sourceTree = "<group>"; };
+		6E9CB6DB2B7AD4170074C2D9 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -75,6 +76,7 @@
 		6E9CB6A22B7A4F680074C2D9 /* LocalEat */ = {
 			isa = PBXGroup;
 			children = (
+				6E9CB6DB2B7AD4170074C2D9 /* Info.plist */,
 				6E9CB6C02B7A58550074C2D9 /* ViewModel */,
 				6E9CB6BF2B7A58500074C2D9 /* View */,
 				6E9CB6BE2B7A58440074C2D9 /* Model */,
@@ -355,6 +357,7 @@
 				DEVELOPMENT_TEAM = NH322A5M6D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LocalEat/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Afin de vous proposer les vendeurs près de chez vous !";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -386,6 +389,7 @@
 				DEVELOPMENT_TEAM = NH322A5M6D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LocalEat/Info.plist;
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Afin de vous proposer les vendeurs près de chez vous !";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;

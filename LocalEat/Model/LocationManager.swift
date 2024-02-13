@@ -10,6 +10,8 @@ import MapKit
 final class LocationManager: NSObject, ObservableObject {
     private let locationManager = CLLocationManager()
     
+    
+    
     @Published var region = MKCoordinateRegion(
         center: .init(latitude: 37.334_900, longitude: -122.009_020),
         span: .init(latitudeDelta: 0.2, longitudeDelta: 0.2)
@@ -44,6 +46,10 @@ final class LocationManager: NSObject, ObservableObject {
 
 extension LocationManager: CLLocationManagerDelegate {
     
+    func requestLocation() {
+        locationManager.requestLocation()
+    }
+    
     // Le premier est appelé lorsque l'utilisateur modifie l'autorisation. S'il est accepté, nous voulons demander l'emplacement afin de mettre à jour la carte (comme nous l'avons fait dans la méthode de configuration)
     
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
@@ -60,16 +66,22 @@ extension LocationManager: CLLocationManagerDelegate {
     // La dernière méthode est la plus intéressante. Il est appelé lorsque nous avons une mise à jour de localisation, et il nous donne un tableau de CLLocation. Selon la documentation officielle, le dernier emplacement du tableau est le plus récent, nous l'utiliserons donc pour centrer la carte sur la position de l'utilisateur.
     
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-        locationManager.stopUpdatingLocation()
-        locations.last.map {
-            region = MKCoordinateRegion(
-                center: $0.coordinate,
-                span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
-            )
+//        locationManager.stopUpdatingLocation()
+//        locations.last.map {
+//            region = MKCoordinateRegion(
+//                center: $0.coordinate,
+//                span: .init(latitudeDelta: 0.01, longitudeDelta: 0.01)
+//            )
+//        }
+        
+        guard let latestLocation = locations.first else {
+            print("error for latest")
+            return
+        }
+        DispatchQueue.main.async {
+            self.region = MKCoordinateRegion(center: latestLocation.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.05, longitudeDelta: 0.05))
         }
     }
     
-//    func requestLocation() {
-//        locationManager.requestLocation()
-//    }
+    
 }

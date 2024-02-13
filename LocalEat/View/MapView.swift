@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CoreLocationUI
 import MapKit
 
 struct MapView: View {
@@ -16,6 +17,8 @@ struct MapView: View {
         ZStack {
             MapDisplay()
             searchBar
+            
+                
             
         }
     }
@@ -36,21 +39,17 @@ struct MapView: View {
     }
     
     private var requestLocation : some View {
-        Button {
-            //manager.requestLocation()
-        } label: {
-            Circle()
-                .foregroundColor(colorScheme == .dark ? .white.opacity(0.6) : .white.opacity(0.8))
-                .frame(width: 50, height: 50)
-                .overlay {
-                    Image(systemName: "location.fill")
-                        .imageScale(.large)
-                        .bold()
-                        .frame(width: 50, height: 50)
-                }
-                .padding()
-            
+        LocationButton(.currentLocation) {
+            manager.requestLocation()
+            print("request")
         }
+        .foregroundColor(.blue)
+        .cornerRadius(25)
+        .symbolVariant(.fill)
+        .labelStyle(.iconOnly)
+        .tint(colorScheme == .dark ? .white : .white)
+        .font(.system(size: 22))
+        .padding()
 
     }
 }
