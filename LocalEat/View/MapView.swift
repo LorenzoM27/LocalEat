@@ -37,9 +37,10 @@ struct MapView: UIViewRepresentable {
             // Excluding user blue circle
             if annotation.isKind(of: MKUserLocation.self) { return nil}
             else {
-                let pinAnnotation = MKPinAnnotationView(annotation: annotation, reuseIdentifier: "PIN_VIEW")
+                let pinAnnotation = MKMarkerAnnotationView(annotation: annotation, reuseIdentifier: "PIN_VIEW")
                 pinAnnotation.tintColor = .green
-                pinAnnotation.animatesDrop = true
+                //pinAnnotation.animatesDrop = true
+                pinAnnotation.animatesWhenAdded = true
                 pinAnnotation.canShowCallout = true
                 
                 return pinAnnotation

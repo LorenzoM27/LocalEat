@@ -34,7 +34,6 @@ struct MapSearchView: View {
                 }
                 Spacer()
             }
-            
         }
         .onAppear(perform: {
             // Setting delegate
@@ -98,7 +97,6 @@ struct MapSearchView: View {
                 }
                 .background(.white)
             }
-        
         }
         .padding()
     }
@@ -114,7 +112,6 @@ struct MapSearchView: View {
                 .clipShape(Circle())
         })
     }
-    
     
     private var mapTypeButton : some View {
         Button(action: {
