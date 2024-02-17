@@ -7,6 +7,7 @@
 
 import SwiftUI
 import FirebaseCore
+import Firebase
 
 class AppDelegate: NSObject, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
@@ -22,11 +23,18 @@ struct LocalEatApp: App {
 
     
     @StateObject private var dataController = DataController()
+    @StateObject var sellerDataManager = SellerDataManager()
+    
+//    init() {
+//        FirebaseApp.configure()
+//    }
 
     var body: some Scene {
         WindowGroup {
             ContentView()
                 .environment(\.managedObjectContext, dataController.container.viewContext)
+            //TestFetchData()
+                .environmentObject(sellerDataManager)
         }
     }
 }

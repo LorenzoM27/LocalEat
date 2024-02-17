@@ -46,9 +46,7 @@ struct MapView: UIViewRepresentable {
                 return pinAnnotation
             }
         }
-        
     }
-
 }
 
 

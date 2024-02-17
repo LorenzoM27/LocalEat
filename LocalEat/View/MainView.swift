@@ -26,7 +26,6 @@ struct MainView: View {
                     .tag(4)
             }
 
-            
             HStack{
                 ForEach((TabItems.allCases), id: \.self){ item in
                     Button{
@@ -64,9 +63,6 @@ extension MainView {
             }
         }
         .frame(width: 60, height: 60)
-        
-        
-        
     }
 }
 
