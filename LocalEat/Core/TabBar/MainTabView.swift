@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct MainTabView: View {
+    @EnvironmentObject var viewModel: AuthViewModel
+    
     var body: some View {
         TabView {
             MapView()
@@ -16,8 +18,8 @@ struct MainTabView: View {
                 .tabItem { Label("Panier", systemImage: "basket") }
             FavoriteView()
                 .tabItem { Label("Favoris", systemImage: "heart") }
-            ProfileView()
-                .tabItem { Label("Profile", systemImage: "person") }
+            ProfilView()
+                .tabItem { Label("Profil", systemImage: "person") }
                 
         }
     }

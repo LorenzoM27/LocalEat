@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>API_KEY</key>
+	<string>AIzaSyCUlj48rRvnf0ZWAUViCArAuPkTBwEjkTo</string>
+	<key>GCM_SENDER_ID</key>
+	<string>376389786754</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.LorenzoM.LocalEat</string>
+	<key>PROJECT_ID</key>
+	<string>localeat-6b3d0</string>
+	<key>STORAGE_BUCKET</key>
+	<string>localeat-6b3d0.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:376389786754:ios:17297fef1349d9e9d9e89b</string>
+</dict>
+</plist>

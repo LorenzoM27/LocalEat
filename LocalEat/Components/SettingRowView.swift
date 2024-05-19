@@ -7,12 +7,25 @@
 
 import SwiftUI
 
-struct SettingRowView: View {
+struct SettingsRowView: View {
+    let imageName: String
+    let title: String
+    let tintColor: Color
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        HStack(spacing: 12) {
+            Image(systemName: imageName)
+                .imageScale(.small)
+                .font(.title)
+                .foregroundStyle(tintColor)
+            
+            Text(title)
+                .font(.subheadline)
+                .foregroundStyle(.black)
+        }
     }
 }
 
 #Preview {
-    SettingRowView()
+    SettingsRowView(imageName: "gear", title: "test", tintColor: Color(.systemGray))
 }
