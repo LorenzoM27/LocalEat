@@ -18,21 +18,7 @@ struct ProfilView: View {
                         List {
                             Section {
                                 HStack {
-                                    if user.image != "" {
-                                        Image(user.image)
-                                            .resizable()
-                                            .frame(width: 100, height: 100)
-                                            .clipShape(Circle())
-                                    } else {
-                                        Text(user.initials)
-                                            .font(.title)
-                                            .fontWeight(.semibold)
-                                            .foregroundStyle(.white)
-                                            .frame(width: 72, height: 72)
-                                            .background(Color(.systemGray3))
-                                            .clipShape(Circle())
-                                    }
-                                   
+                                    ProfilPhotoView()
                                     
                                     VStack(alignment: .leading, spacing: 4) {
                                         Text(user.firstName + " " + user.lastName)
