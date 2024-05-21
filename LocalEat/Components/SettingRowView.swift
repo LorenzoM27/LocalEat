@@ -12,6 +12,8 @@ struct SettingsRowView: View {
     let title: String
     let tintColor: Color
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         HStack(spacing: 12) {
             Image(systemName: imageName)
@@ -21,7 +23,7 @@ struct SettingsRowView: View {
             
             Text(title)
                 .font(.subheadline)
-                .foregroundStyle(.black)
+                .foregroundStyle(colorScheme == .dark ? .white : .black)
         }
     }
 }
