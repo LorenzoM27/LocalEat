@@ -14,7 +14,7 @@ struct ProfilPhotoView: View {
     
     @State private var profilImage: UIImage?
     @State private var photosPickerItem: PhotosPickerItem?
-    @State private var retrieveProfilPhoto = [UIImage]()
+    @State private var retrieveProfilPhoto: UIImage?
     
     @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
@@ -24,13 +24,16 @@ struct ProfilPhotoView: View {
                 ZStack(alignment: .bottomTrailing) {
                     if user.image != "" {
                         
-                        ForEach(retrieveProfilPhoto, id: \.self) { image in
+                      //  ForEach(retrieveProfilPhoto, id: \.self) { image in
+                        if let image = retrieveProfilPhoto {
                             Image(uiImage: image)
                                 .resizable()
                                 .scaledToFill()
                                 .frame(width: 72, height: 72)
                                 .clipShape(Circle())
                         }
+                          
+                      //  }
                         
                     } else {
                         Text(user.initials)
@@ -118,19 +121,19 @@ struct ProfilPhotoView: View {
             
             if error == nil && snapshot != nil {
                 
-                var imagePaths =  [String]()
+                var imagePaths: String // = [String]()
                 // Extract file path and add to array
                 let dataDescription  = snapshot!.data()
-                imagePaths.append(dataDescription?["image"] as! String)
+                imagePaths = dataDescription?["image"] as! String // .append(...)
                 
                 // Loop through each file path and and fetch the data from storage
-                for path in imagePaths {
+             ///   for path in imagePaths { -> Si imagePath = tableau
                     
                     // Get a reference to storage
                     let storageRef = Storage.storage().reference()
                     
                     // specify the path
-                    let fileRef = storageRef.child(path)
+                    let fileRef = storageRef.child(imagePaths) // path de la boucle si imagePath = tableau
                     
                     // retrieve the data
                     fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
@@ -141,12 +144,12 @@ struct ProfilPhotoView: View {
                             // create UIimage and put it into array for display
                             if let image = UIImage(data: data!) {
                                 DispatchQueue.main.async {
-                                    retrieveProfilPhoto.append(image)
+                                    retrieveProfilPhoto = image // .append(image)
                                 }
                             }
                         }
                     }
-                }
+              ///  }
                 
             } else {
                 print("DEBUG: Impossible to fetch image from db, \(error!.localizedDescription)")
@@ -155,6 +158,6 @@ struct ProfilPhotoView: View {
     }
 }
 
-#Preview {
-    ProfilPhotoView()
-}
+//#Preview {
+//    ProfilPhotoView( )
+//}
