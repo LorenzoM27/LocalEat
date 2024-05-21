@@ -14,6 +14,7 @@ struct ProfilPhotoView: View {
     
     @State private var profilImage: UIImage?
     @State private var photosPickerItem: PhotosPickerItem?
+    @State private var retrieveProfilPhoto = [UIImage]()
     
     @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
@@ -22,10 +23,15 @@ struct ProfilPhotoView: View {
             PhotosPicker(selection: $photosPickerItem, matching: .images) {
                 ZStack(alignment: .bottomTrailing) {
                     if user.image != "" {
-                        Image(user.image)
-                            .resizable()
-                            .frame(width: 100, height: 100)
-                            .clipShape(Circle())
+                        
+                        ForEach(retrieveProfilPhoto, id: \.self) { image in
+                            Image(uiImage: image)
+                                .resizable()
+                                .scaledToFill()
+                                .frame(width: 72, height: 72)
+                                .clipShape(Circle())
+                        }
+                        
                     } else {
                         Text(user.initials)
                             .font(.title)
@@ -90,17 +96,62 @@ struct ProfilPhotoView: View {
                 // TODO: Save a reference to the file in firestore DB
                 let db = Firestore.firestore()
                 // will replace only fields into mergeFields by the selected image
-                db.collection("users").document(viewModel.currentUser!.id).setData(["image" : path], mergeFields: ["image"])//.setData(["image" : path], merge: true)
+                db.collection("users").document(viewModel.currentUser!.id).setData(["image" : path], mergeFields: ["image"]) { error in
+                    
+                    if error == nil {
+                        DispatchQueue.main.async {
+                            retrievePhoto()
+                        }
+                        
+                    }
+                }
+                
             }
         }
     }
     
     func retrievePhoto() {
         // Get data from database
+        let db = Firestore.firestore()
         
-        // Get the image data in storage for each image reference
-        
-        // Dispplay images
+        db.collection("users").document(viewModel.currentUser!.id).getDocument { snapshot, error in
+            
+            if error == nil && snapshot != nil {
+                
+                var imagePaths =  [String]()
+                // Extract file path and add to array
+                let dataDescription  = snapshot!.data()
+                imagePaths.append(dataDescription?["image"] as! String)
+                
+                // Loop through each file path and and fetch the data from storage
+                for path in imagePaths {
+                    
+                    // Get a reference to storage
+                    let storageRef = Storage.storage().reference()
+                    
+                    // specify the path
+                    let fileRef = storageRef.child(path)
+                    
+                    // retrieve the data
+                    fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
+                        
+                        // Check for errors
+                        if error  == nil && data != nil {
+                            
+                            // create UIimage and put it into array for display
+                            if let image = UIImage(data: data!) {
+                                DispatchQueue.main.async {
+                                    retrieveProfilPhoto.append(image)
+                                }
+                            }
+                        }
+                    }
+                }
+                
+            } else {
+                print("DEBUG: Impossible to fetch image from db, \(error!.localizedDescription)")
+            }
+        }
     }
 }
 
