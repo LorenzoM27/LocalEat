@@ -18,13 +18,21 @@ struct ProfilView: View {
                         List {
                             Section {
                                 HStack {
-                                    Text(user.initials)
-                                        .font(.title)
-                                        .fontWeight(.semibold)
-                                        .foregroundStyle(.white)
-                                        .frame(width: 72, height: 72)
-                                        .background(Color(.systemGray3))
-                                        .clipShape(Circle())
+                                    if user.image != "" {
+                                        Image(user.image)
+                                            .resizable()
+                                            .frame(width: 100, height: 100)
+                                            .clipShape(Circle())
+                                    } else {
+                                        Text(user.initials)
+                                            .font(.title)
+                                            .fontWeight(.semibold)
+                                            .foregroundStyle(.white)
+                                            .frame(width: 72, height: 72)
+                                            .background(Color(.systemGray3))
+                                            .clipShape(Circle())
+                                    }
+                                   
                                     
                                     VStack(alignment: .leading, spacing: 4) {
                                         Text(user.firstName + " " + user.lastName)
@@ -41,8 +49,9 @@ struct ProfilView: View {
                                 }
                             }
                             Section("Général") {
-                                Text("Photo de profil")
                                 Text("Historique achats")
+                                Text("Numéro de téléphone")
+                                
                             }
                             Section("Compte") {
                                 Button {
@@ -72,6 +81,6 @@ struct ProfilView: View {
     }
 }
 
-#Preview {
-    ProfilView()
-}
+//#Preview {
+//    ProfilView()
+//}

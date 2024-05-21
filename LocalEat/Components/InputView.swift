@@ -14,11 +14,13 @@ struct InputView: View {
     let placeholder: String
     var isSecureField = false
     
+    @Environment(\.colorScheme) var colorScheme
+    
     var body: some View {
         
         VStack(alignment: .leading, spacing: 12) {
             Text(title)
-                .foregroundStyle(Color(.darkGray))
+                .foregroundStyle(colorScheme == .dark ? .white : Color(.darkGray))
                 .fontWeight(.semibold)
                 .font(.footnote)
             

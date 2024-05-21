@@ -14,6 +14,7 @@ struct Seller: Codable, Identifiable {
     let lastName : String
     let email : String
     let address : String
+    let city: String
     let latitude : Double
     let longitude : Double
     let farmImage : String
@@ -32,6 +33,7 @@ extension Seller {
                lastName: "Dupont",
                email: "jean.dupont@gmail.com",
                address: "12 rue de la ferme",
+               city: "Lille",
                latitude: 50.62675268799279,
                longitude: 3.043829431765857,
                farmImage: "farm-1",
@@ -45,6 +47,7 @@ extension Seller {
                lastName: "Dupont",
                email: "jean.dupont@gmail.com",
                address: "12 rue de la ferme",
+               city: "Lille",
                latitude: 50.64260975822359,
                longitude: 3.125808781133715,
                farmImage: "farm-1",

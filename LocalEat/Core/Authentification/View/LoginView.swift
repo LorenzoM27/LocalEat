@@ -54,7 +54,7 @@ struct LoginView: View {
                             .navigationBarBackButtonHidden()
                     } label: {
                         HStack {
-                            Text("Pas encore de inscrit ?")
+                            Text("Pas encore inscrit ?")
                             Text("Créer un compte")
                                 .fontWeight(.bold)
                         }

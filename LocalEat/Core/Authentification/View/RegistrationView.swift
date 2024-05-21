@@ -57,7 +57,7 @@ struct RegistrationView: View {
             } label: {
                 Text("Créer un compte")
                     .foregroundStyle(.white)
-                    .fontWeight(.semibold)
+                    .fontWeight(.bold)
                     .frame(width: UIScreen.main.bounds.width - 32, height: 48)
             }
             .background(.accent)
@@ -73,7 +73,7 @@ struct RegistrationView: View {
             } label: {
                 HStack {
                     Text("Déja inscrit ?")
-                    Text("Connecrez-vous")
+                    Text("Connectez-vous")
                         .fontWeight(.bold)
                 }
             }

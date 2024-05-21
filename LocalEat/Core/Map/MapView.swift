@@ -6,10 +6,21 @@
 //
 
 import SwiftUI
+import MapKit
 
 struct MapView: View {
+    
     var body: some View {
-        Text("map")
+        Map() {
+            ForEach(Seller.MOCK_SELLERS) { coordinate in
+                Marker(coordinate.farmName, coordinate: CLLocationCoordinate2D(latitude: coordinate.latitude, longitude: coordinate.longitude))
+                    .tint(.green)
+                }
+        }
+        .mapControls {
+            MapPitchToggle()
+            MapUserLocationButton()
+        }
           
     }
 }
