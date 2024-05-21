@@ -14,7 +14,7 @@ struct ProfilPhotoView: View {
     
     @State private var profilImage: UIImage?
     @State private var photosPickerItem: PhotosPickerItem?
-    @State private var retrieveProfilPhoto: UIImage?
+    @State private var retrieveProfilPhoto = [UIImage]() // can be UIImage? type
     
     @EnvironmentObject var viewModel: AuthViewModel
     var body: some View {
@@ -22,10 +22,9 @@ struct ProfilPhotoView: View {
         if let user = viewModel.currentUser {
             PhotosPicker(selection: $photosPickerItem, matching: .images) {
                 ZStack(alignment: .bottomTrailing) {
-                    if user.image != "" {
+                    if !retrieveProfilPhoto.isEmpty {
                         
-                      //  ForEach(retrieveProfilPhoto, id: \.self) { image in
-                        if let image = retrieveProfilPhoto {
+                       ForEach(retrieveProfilPhoto, id: \.self) { image in // If not an array, do an if let loop
                             Image(uiImage: image)
                                 .resizable()
                                 .scaledToFill()
@@ -33,7 +32,6 @@ struct ProfilPhotoView: View {
                                 .clipShape(Circle())
                         }
                           
-                      //  }
                         
                     } else {
                         Text(user.initials)
@@ -72,6 +70,11 @@ struct ProfilPhotoView: View {
                         }
                         uploadPhoto()
                     }
+                }
+            }
+            .onAppear {
+                DispatchQueue.main.async {
+                    retrievePhoto()
                 }
             }
         }
@@ -121,19 +124,19 @@ struct ProfilPhotoView: View {
             
             if error == nil && snapshot != nil {
                 
-                var imagePaths: String // = [String]()
+                var imagePaths = [String]() // : String
                 // Extract file path and add to array
                 let dataDescription  = snapshot!.data()
-                imagePaths = dataDescription?["image"] as! String // .append(...)
+                imagePaths.append(dataDescription?["image"] as! String) // retire .append(...)
                 
                 // Loop through each file path and and fetch the data from storage
-             ///   for path in imagePaths { -> Si imagePath = tableau
+                for path in imagePaths {  // -> Si imagePath : String, on retire la boucle
                     
                     // Get a reference to storage
                     let storageRef = Storage.storage().reference()
                     
                     // specify the path
-                    let fileRef = storageRef.child(imagePaths) // path de la boucle si imagePath = tableau
+                    let fileRef = storageRef.child(path) //  imagePath si pas de tableau donc pas de boucle
                     
                     // retrieve the data
                     fileRef.getData(maxSize: 5 * 1024 * 1024) { data, error in
@@ -144,12 +147,12 @@ struct ProfilPhotoView: View {
                             // create UIimage and put it into array for display
                             if let image = UIImage(data: data!) {
                                 DispatchQueue.main.async {
-                                    retrieveProfilPhoto = image // .append(image)
+                                    retrieveProfilPhoto.append(image) // retire .append()
                                 }
                             }
                         }
                     }
-              ///  }
+               }
                 
             } else {
                 print("DEBUG: Impossible to fetch image from db, \(error!.localizedDescription)")
